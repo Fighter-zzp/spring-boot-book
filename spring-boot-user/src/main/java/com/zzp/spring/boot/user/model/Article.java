@@ -1,11 +1,10 @@
 package com.zzp.spring.boot.user.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +12,8 @@ import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "article")
-@Data
+//@Data
+@Getter@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article implements Serializable {
@@ -33,9 +33,10 @@ public class Article implements Serializable {
     private Integer isTop;
     private Integer isEnable;
 
-    @ManyToMany(cascade = ALL, fetch = FetchType.EAGER)
+    @ManyToMany/*(targetEntity = Tag.class,cascade = ALL,fetch = FetchType.EAGER)*/
     @JoinTable(name = "article_tag", joinColumns = {@JoinColumn(name = "article_id")}, inverseJoinColumns = {@JoinColumn(name = "tag_id")})
-    private List<Tag> tagList;
+    private List<Tag> tagList=new ArrayList<>();
+
 
     //项目内使用，非数据库字段
     @Transient

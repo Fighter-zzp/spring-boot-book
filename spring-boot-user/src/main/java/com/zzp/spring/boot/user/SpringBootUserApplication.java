@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.zzp.spring.boot.user")
+//@ComponentScan(basePackages = "com.zzp.spring.boot.user")
 public class SpringBootUserApplication {
 
     public static void main(String[] args) {

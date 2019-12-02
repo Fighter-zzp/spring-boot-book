@@ -13,7 +13,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-    open-in-view: false
+
 
   datasource:
     url: jdbc:mysql:///mybook?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false

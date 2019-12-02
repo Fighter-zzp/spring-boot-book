@@ -1,20 +1,21 @@
 package com.zzp.spring.boot.user.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "tag")
-@Data
+//@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Tag implements Serializable {
@@ -27,8 +28,10 @@ public class Tag implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date tagInputDate;
 
-    @ManyToMany(cascade = ALL, fetch = FetchType.EAGER)
+    @ManyToMany/*(mappedBy = "tagList",fetch = FetchType.EAGER)*/
+//    @JsonIgnore( = true)
     @JoinTable(name = "article_tag", joinColumns = {@JoinColumn(name = "tag_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
-    private List<Article> articleList;
+    private List<Article> articleList = new ArrayList<>();
+
 
 }
